@@ -63,6 +63,10 @@ h1 {
     cursor: pointer;
 }
 
+.post-btn:hover {
+    opacity: 0.7;
+}
+
 .post-btn:disabled {
     background-color: #979797;
     opacity: 0.5;

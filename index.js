@@ -1,7 +1,7 @@
 const posts = [];
 
-const TITLE_VALIDATION_LIMIT = 10;
-const TEXT_VALIDATION_LIMIT = 20;
+const TITLE_VALIDATION_LIMIT = 100;
+const TEXT_VALIDATION_LIMIT = 200;
 
 const titleInputNode = document.querySelector(".js-title-input");
 const textInputNode = document.querySelector(".js-text-input");
@@ -13,6 +13,8 @@ const textCounterNode = document.querySelector(".js-text-char-counter");
 
 const ERROR_TITLE = `Заголовок больше ${TITLE_VALIDATION_LIMIT} символов`;
 const ERROR_TEXT = `Пост больше ${TEXT_VALIDATION_LIMIT} символов`;
+const MISSING_TITLE = "Не хватает заголовка";
+const MISSING_TEXT = "Не хватает текста поста";
 
 titleInputNode.addEventListener("input", function() {
     validation();
@@ -25,7 +27,7 @@ textInputNode.addEventListener("input", function() {
 });
 
 postBtnNode.addEventListener("click", function() {
-    if (titleInputNode.value.length > TITLE_VALIDATION_LIMIT | textInputNode.value.length > TEXT_VALIDATION_LIMIT) {
+    if (titleInputNode.value.length > TITLE_VALIDATION_LIMIT | textInputNode.value.length > TEXT_VALIDATION_LIMIT | titleInputNode.value.length == 0 | textInputNode.value.length == 0) {
         return;
     }
     
@@ -40,8 +42,22 @@ function validation () {
     const titleLen = titleInputNode.value.length;
     const textLen = textInputNode.value.length;
 
+    if (titleLen == 0) {
+        errorFieldNode.innerHTML = MISSING_TITLE;
+        errorFieldNode.classList.remove("error-field_hidden");
+        postBtnNode.disabled = true;
+        return;
+    }
+
     if (titleLen > TITLE_VALIDATION_LIMIT) {
         errorFieldNode.innerHTML = ERROR_TITLE;
+        errorFieldNode.classList.remove("error-field_hidden");
+        postBtnNode.disabled = true;
+        return;
+    }
+
+    if (textLen == 0) {
+        errorFieldNode.innerHTML = MISSING_TEXT;
         errorFieldNode.classList.remove("error-field_hidden");
         postBtnNode.disabled = true;
         return;
