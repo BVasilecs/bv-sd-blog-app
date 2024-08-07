@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reset.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>Blog App</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <h1>Новый пост</h1>
+            <div class="title-container">
+                <input
+                type="title"
+                class="js-title-input title input "
+                name="title"
+                placeholder="Заголовок"
+            >
+            <div class="title-char-counter js-title-char-counter">0/100</div>
+            </div>
+            <div class="textarea-container">
+                <textarea
+                type="textarea"
+                class="js-text-input text input"
+                name="text"
+                placeholder="Напиши пост"
+                ></textarea>
+                <div class="text-char-counter js-text-char-counter">0/200</div>
+            </div>    
+            <button class="js-post-btn post-btn ">Опубликовать</button>
+            <div class="js-error-field error-field error-field_hidden"></div>
+        </div>
+        <div class="container">
+            <h1>Лента</h1>
+            <div class="js-posts posts">
+                <p class="temp-text">Тут пока пусто...</p>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
