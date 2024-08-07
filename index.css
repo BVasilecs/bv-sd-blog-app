@@ -46,6 +46,7 @@ h1 {
 }
 
 .text {
+    resize: none;
     height: 250px;
 }
 
