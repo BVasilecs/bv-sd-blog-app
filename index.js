@@ -27,7 +27,7 @@ textInputNode.addEventListener("input", function() {
 });
 
 postBtnNode.addEventListener("click", function() {
-    if (titleInputNode.value.length > TITLE_VALIDATION_LIMIT | textInputNode.value.length > TEXT_VALIDATION_LIMIT | titleInputNode.value.length == 0 | textInputNode.value.length == 0) {
+    if (titleInputNode.value.trim().length > TITLE_VALIDATION_LIMIT || textInputNode.value.trim().length > TEXT_VALIDATION_LIMIT || titleInputNode.value.trim().length == 0 || textInputNode.value.trim().length == 0) {
         return;
     }
     
@@ -39,10 +39,10 @@ postBtnNode.addEventListener("click", function() {
 });
 
 function validation () {
-    const titleLen = titleInputNode.value.length;
-    const textLen = textInputNode.value.length;
+    const titleLen = titleInputNode.value.trim().length;
+    const textLen = textInputNode.value.trim().length;
 
-    if (titleLen == 0) {
+    if (titleLen === 0) {
         errorFieldNode.innerHTML = MISSING_TITLE;
         errorFieldNode.classList.remove("error-field_hidden");
         postBtnNode.disabled = true;
@@ -56,7 +56,7 @@ function validation () {
         return;
     }
 
-    if (textLen == 0) {
+    if (textLen === 0) {
         errorFieldNode.innerHTML = MISSING_TEXT;
         errorFieldNode.classList.remove("error-field_hidden");
         postBtnNode.disabled = true;
@@ -92,8 +92,8 @@ function getCurrentFormattedDate() {
 
 function getPostFromUser () {
     const date = getCurrentFormattedDate();
-    const title = titleInputNode.value;
-    const text = textInputNode.value;
+    const title = titleInputNode.value.trim();
+    const text = textInputNode.value.trim();
     
     return {
         date: date,
